@@ -5,6 +5,8 @@ import java.util.*;
 public class PrimMST {
     public static MSTResult compute(Graph g) {
         int n = g.vertexCount();
+        if (n == 0) return new MSTResult(Collections.emptyList(), 0, 0, 0L);
+
         boolean[] used = new boolean[n];
         int[] parent = new int[n];
         int[] key = new int[n];
@@ -44,6 +46,10 @@ public class PrimMST {
 
         long end = System.nanoTime();
         long cost = mst.stream().mapToLong(e -> e.weight).sum();
-        return new MSTResult(mst, cost, ops, (end - start) / 1e6);
+
+        long elapsedMs = (end - start) / 1_000_000L; // floor milliseconds
+        if (elapsedMs == 0 && end > start) elapsedMs = 1L; // if non-zero duration but <1ms, show 1ms
+
+        return new MSTResult(mst, cost, ops, elapsedMs);
     }
 }

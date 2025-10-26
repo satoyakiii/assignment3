@@ -27,7 +27,12 @@ public class Graph {
     }
 
     public List<Edge> getAllEdges() { return allEdges; }
+
     public List<Edge> adj(int u) { return adj.get(u); }
+
     public int vertexCount() { return nodes.size(); }
+
+    public int edgeCount() { return allEdges.size(); } // ✅ ← вот этот метод нужен
+
     public String labelOf(int i) { return nodes.get(i); }
 }
