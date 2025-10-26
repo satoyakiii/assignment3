@@ -1,0 +1,11 @@
+target/
+*.class
+*.iml
+.idea/
+*.DS_Store
+*.log
+output.json
+results_summary.csv
+graph_*.dot
+graph_*.png
+generated_input.json
